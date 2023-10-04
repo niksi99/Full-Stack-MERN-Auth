@@ -3,6 +3,8 @@ const express = require('express');
 const morgan = require('morgan');
 const body_parser = require('body-parser');
 const cookie_parser = require('cookie-parser');
+const cors = require('cors');
+
 const MongoDBConnection = require('./server/config/MongoDB');
 const app = express();
 
@@ -12,6 +14,12 @@ app.use(morgan("dev"))
 app.use(body_parser.json());
 app.use(body_parser.urlencoded({ extended: false }));
 app.use(cookie_parser());
+
+app.use(cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ['*'],
+}))
 
 const AuthRoute = require("./server/routes/AuthRoute");
 
