@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import Oath from '../components/Oath';
 
 export default function Login() {
 
@@ -64,6 +65,7 @@ export default function Login() {
             onChange={(event) => setPassword(event.target.value)}/>
           </div>
           <button>Login</button>
+          <Oath></Oath>
         </form>
       </div>
     </div>
