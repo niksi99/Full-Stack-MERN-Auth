@@ -23,16 +23,19 @@ export default function Oath() {
             //     })
             // });
 
-            const respAxios = await axios.post("http://localhost:1004/auth/google", JSON.stringify({
+            const podaci = {
                 name: result.user.displayName,
                 email: result.user.email,
                 photo: result.user.photoURL
-            })).then((res) => navigate("/"))
+            }
+            const respAxios = await axios
+               .post("http://localhost:1004/auth/google", podaci)
+               .then((res) => {
+                    console.log(res)
+                    navigate("/")
+               })
                .catch((error) => console.log(error))
-            
-            //const data = await respAxios.json();
-            console.log(respAxios.json())
-            navigate("/");
+        
         } catch (error) {
             console.log(error)
         }
